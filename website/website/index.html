@@ -1,0 +1,1169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Professional Online Store</title>
+<style>
+/* ------- base ----- */
+/* ------- base ----- */
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f4f6f9;
+  color: #111;
+  -webkit-font-smoothing:antialiased;
+}
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 10px 15px;
+}
+
+.nav-inner {
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Mobile Fix */
+@media (max-width: 768px) {
+  .nav-inner {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .nav-actions {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .nav-actions input {
+    width: 100%;
+    max-width: 200px;
+  }
+}
+
+/* NAVBAR */
+#navBar {
+  display: none;
+  padding: 12px 20px;
+  background-color: #000000;
+  color: white;
+  display: flex;
+  justify-content: center;   /* ✅ Center login/cart area */
+  align-items: center;
+  gap: 12px;
+  border-radius: 8px;
+}
+
+#navBar h2 { margin:0; font-size:18px; letter-spacing:0.6px; }
+#navBar input {
+  background-color: #f1efef;
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: none;
+  width: 280px;
+  outline: none;
+}
+
+/* BUTTON */
+button {
+  padding: 10px;
+  font-size: 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  background: #000000;
+  color: white;
+  font-weight: 600;
+}
+button.ghost {
+  background: transparent; color:#f7f7f7; border:1px solid rgba(11,114,255,0.12);
+}
+
+/* ✅ MAKE CART BUTTON ORANGE */
+#navBar button:first-of-type {
+  background: orange !important;
+  color: white !important;
+}
+
+
+
+/* LOGIN */
+section { display: none; padding: 20px; }
+#loginPage {
+  display: flex;
+  height: 90vh; 
+  display: flex;
+  justify-content: center; /* already centered */
+  align-items: center;
+  background-image: url("images/picture.jpg/background2.png");
+  background-size: cover;
+  background-position: 5% center;
+}
+.login-box {
+  background: rgb(0, 0, 0);
+  padding: 30px;
+  border-radius: 12px;
+  text-align: center;
+  float: left ;
+  width: 90px;
+  max-width: 320px;
+  margin:auto;
+  box-shadow: 0 8px 30px rgb(54, 107, 223);
+}
+.login-box input {
+  width: 92%;
+  padding: 15px;
+  margin-top: 12px;
+  border: 1px solid #e3e7ea;
+  border-radius: 6px;
+  outline: none;
+}
+
+/* CATEGORY BUTTONS */
+.category-btns {
+  text-align: center;
+  margin: 18px 0;
+}
+.category-btns button {
+  margin: 6px;
+  background: #070000;
+  color: white;
+  padding: 8px 14px;
+  border-radius: 6px;
+}
+
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 15px;
+}
+
+.product {
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.product img {
+  height: 140px;
+}
+
+.product h3 {
+  font-size: 14px;
+}
+
+.product p {
+  font-size: 13px;
+}
+.product img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+.product h3 { margin: 10px 0 6px; font-size:16px; }
+.product p { margin: 6px 0 10px; color:#333; font-weight:600 }
+
+/* ✅ MAKE ALL "ADD TO CART" BUTTONS BLACK */
+.product button {
+  background: black !important;
+  color: rgb(224, 220, 220) !important;
+}
+
+/* CART / BILLING / DELIVERY / CONFIRM */
+.cart-inner, .billing-inner, .confirm-inner, .feedback-inner {
+  background: white;
+  padding: 18px;
+  border-radius: 10px;
+  box-shadow: 0 8px 30px rgba(2,6,23,0.06);
+  max-width: 550px;
+  margin: 12px auto;
+}
+
+.qty-controls button { background:#e9eefb; color:#0b72ff; }
+
+/* responsive */
+@media (max-width:700px){
+  .form-row { flex-direction:column; }
+  #navBar input { width: 140px; }
+}
+
+ /* ✅ Make product name & price white */
+.product h3,
+.product p {
+  color: white !important;
+}
+
+/* ✅ Make REMOVE button black */
+#cartPage button.ghost {
+  background: black !important;
+  color: white !important;
+  border: 1px solid black !important;
+}
+/* ✅ Make BACK button black (in cart total area) */
+#cartPage button[onclick*="productPage"] {
+  background: black !important;
+  color: white !important;
+}
+
+/* ✅ Make BACK TO CART button BLACK on Billing Page */
+#billingPage button.ghost {
+  background: black !important;
+  color: white !important;
+  border: 1px solid black !important;
+}
+
+input, textarea {
+  margin-bottom: 15px;
+}
+
+#productpage button.new{
+   width: auto;
+   background-size: auto;
+}
+
+.new-arrival-center {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.new-arrival-btn {
+  background: crimson;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 12px 25px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.new-arrival-btn:hover {
+  transform: scale(1.05);
+}
+
+
+.category-flex {
+  position: relative;
+  padding: 40px 0; /* spacing up & down */
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ========== CENTER BUTTON (Large) ========== */
+.center-btn {
+  background: black;
+  color: white;
+  padding: 14px 40px;
+  font-size: 20px;
+  border-radius: 12px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.side-btn, .center-btn {
+  position: static !important;
+}
+/* ========== SIDE BUTTONS (Small) ========== */
+.side-btn {
+  background: black;
+  color: white;
+  padding: 10px 22px;
+  font-size: 15px;
+  border-radius: 10px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* LEFT BUTTON */
+.left-btn {
+  left: 40px;  /* Distance from center button */
+}
+
+/* RIGHT BUTTON */
+.right-btn {
+  right: 40px; /* Distance from center button */
+}
+
+body {
+    background-image: url("images/picture.jpg/background2.png");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.product-heading {
+    color: white;
+}
+
+/* ========== CATEGORY BUTTON ALIGNMENTS ========== */
+
+/* Move NEW ARRIVALS button up */
+.center-btn {
+  position: relative !important;
+  top: -50px !important;
+  padding: 6px 12px !important;  /* smaller padding */
+  font-size: 20px !important;    /* smaller text */
+  border-radius: 6px !important;
+  
+}
+
+/* Move Men buttons left */
+.left-btn {
+  position: relative !important;
+  left: -370px !important;
+}
+
+/* Move Women buttons right */
+.right-btn {
+  position: relative !important;
+  left: 380px !important;
+}
+
+/* Smooth transition for when hovered or changes */
+.side-btn .center-btn {
+  transition: all 0.3s ease !important;
+}
+
+footer {
+  background-color: transparent; /* optional, can set a color if you want */
+  color: rgb(255, 255, 255);                  /* makes text white */
+  text-align: center;            /* centers the text horizontally */
+  padding: 15px 0;               /* adds vertical spacing */
+  position: relative;            /* stays at normal flow */
+  width: 100%;                   /* spans full width */
+  font-size: 14px;               /* optional: adjust text size */
+  margin-top: 40px;
+}
+
+.contact-btn {
+  background-color: #000000;
+  color: white;
+  padding: 12px 25px;
+  font-size: 16px;
+  width: 90%;
+  max-width: 300px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin: 20px auto;
+  display: block;
+  transition: background 0.3s;
+}
+
+.contact-btn:hover {
+  background-color: #000000;
+}
+
+.hidden-contact {
+  max-height: 0;
+  overflow: hidden;
+  text-align: center;
+  color: white;
+  margin-top: 10px;
+  background-color: rgba(0,0,0,0.5);
+  padding: 0 15px;
+  border-radius: 8px;
+  transition: max-height 0.5s ease, padding 0.5s ease;
+}
+
+/* when visible */
+.hidden-contact.show {
+  max-height: 300px; /* enough height for content */
+  padding: 15px;
+}
+
+.menu-wrapper {
+  display: flex;
+  align-items: center;        /* ✅ center vertically */
+}
+
+
+/* menu icon button */
+.menu-btn {
+  background: #000000;              /* black */
+  color: #fff;
+  font-size: 18px;               /* smaller icon */
+  padding: 4px 8px;             /* smaller size */
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+
+/* dropdown box */
+.menu-dropdown {
+  position: absolute;
+  top: 55px;
+  left: 30;
+  width: 180px;
+  background: #111;
+  border-radius: 10px;
+  display: none;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+}
+
+/* dropdown buttons */
+.menu-dropdown button {
+  background: transparent;
+  color: white;
+  padding: 12px;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  width: 100%;
+  font-size: 15px;
+}
+
+/* hover effect */
+.menu-dropdown button:hover {
+  background: #f5a623;
+  color: black;
+}
+
+
+/* NAVBAR */
+#navBar {
+  width: 100%;
+  background: #f5f1e8;
+  padding: 7px 0;
+  display: none;            /* ✅ hidden by default */
+  justify-content: center;
+  align-items: center;
+}
+
+
+.nav-inner {
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* keep space between left, center, right */
+  height: 56px;
+}
+
+/* SPACE BETWEEN HAMBURGER AND TITLE */
+.menu-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 20px; /* space between hamburger and title */
+}
+
+/* Make search input black */
+.nav-actions input {
+  height: 36px;
+  padding: 0 12px;
+  border-radius: 6px;
+  border: 1px solid #000000;
+  outline: none;
+  background-color: #000;
+  color: #fff;
+  }
+
+
+
+/* Make logout button black */
+.nav-actions button.ghost {
+  background-color: black !important;
+  color: white !important;
+  border: 1px solid black !important;
+}
+
+.nav-title {
+  color: black !important;
+}
+
+
+
+.image-banner {
+  width: 100%;
+  margin-top: 50px;   /* ✅ space below navbar */
+  padding: 0;
+}
+
+
+.image-banner img {
+  width: 100%;
+  height: auto;
+  max-height: 300px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.nav-inner {
+  height: auto;       /* instead of 56px */
+  padding: 0 20px;    
+}
+
+
+body.after-login {
+  background-image: url(images/bg2.png); /* new bg after login */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  color: #111; /* optional, if you want to adjust text color */
+}
+
+@media (max-width: 480px) {
+
+  .image-banner img {
+    max-height: 200px;
+  }
+
+  .products {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .product img {
+    height: 120px;
+  }
+
+  .product h3 {
+    font-size: 13px;
+  }
+
+  .product p {
+    font-size: 12px;
+  }
+
+  .nav-title {
+    font-size: 14px;
+  }
+
+  .menu-btn {
+    font-size: 16px;
+  }
+
+}
+
+@media (max-width: 768px) {
+
+  .nav-inner {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .nav-actions {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .nav-actions input {
+    width: 90%;
+  }
+
+  .products {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .product img {
+    height: 120px;
+  }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- NAVBAR (FULL WIDTH) -->
+<div id="navBar">
+  <div class="nav-inner">
+
+    <!-- LEFT -->
+    <div class="menu-wrapper">
+      <button class="menu-btn" onclick="toggleMenu()">☰</button>
+
+      <div class="menu-dropdown" id="menuDropdown">
+        <button onclick="goCategory('new')">🔥 New Arrivals</button>
+        <button onclick="goCategory('boys')">Men Clothes</button>
+        <button onclick="goCategory('girls')">Women Clothes</button>
+        <button onclick="goCategory('boys acessories')">Men Accessories</button>
+        <button onclick="goCategory('girls acessories')">Women Accessories</button>
+      </div>
+    </div>
+
+    
+    <!-- CENTER -->
+   <div class="nav-title-wrapper" style="margin-left: 20px;">
+   <h2 class="nav-title">WELCOME TO ELARO </h2>
+
+   </div>
+
+    <!-- RIGHT -->
+    <div class="nav-actions">
+      <input type="text" id="topSearch" placeholder="Search..." onkeyup="searchProduct()">
+      <button onclick="showPage('cartPage')">🛒 <span id="cart-count">0</span></button>
+      <button class="ghost" onclick="logout()">Logout</button>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- LOGIN -->
+<section id="loginPage">
+  <div class="login-box">
+    <h2></h2>
+    <div style="margin: top -12px">
+      <button onclick="login()">➜➔</button>
+    </div>
+    
+  </div>
+</section>
+  
+
+
+<!-- PRODUCTS -->
+<section id="productPage">
+
+    <!-- IMAGE BANNER -->
+<div class="image-banner">
+  <img id="categoryBanner" src="images/banners/men.png" alt="Banner">
+</div> 
+
+  <!-- Dynamic product rendering -->
+  <div class="products" id="productsList"></div>
+
+
+</section>
+
+
+<!-- CART -->
+<section id="cartPage">
+  <div class="cart-inner">
+    <h2>Your Cart</h2>
+    <ul id="cartItems"></ul>
+
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-top:12px;">
+      <h3>Total: PKR <span id="totalAmount">0</span></h3>
+      <div>
+        <button onclick="showPage('productPage')" class="ghost">Back</button>
+        <button onclick="goToBilling()">Proceed to Billing</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- BILLING PAGE -->
+<section id="billingPage">
+  <div class="billing-inner">
+    <h2>Billing & Shipping</h2>
+    <form id="billingForm" onsubmit="submitBilling(event)">
+      <div class="form-row">
+        <div class="form-field">
+          <input class="input" id="billName" placeholder="Full name" required /><br>
+        </div>
+        <div class="form-field">
+          <input class="input" id="billPhone" placeholder="Phone number" required /><br>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-field">
+          <input class="input" id="billEmail" placeholder="Email (optional)" type="email" /><br>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-field">
+          <textarea id="billAddress" class="input" placeholder="Shipping Address" required></textarea><br>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-field">
+          <label for="shipMethod" style="display:block;margin-bottom:6px;font-weight:600">Shipment Method</label>
+          <select id="shipMethod" required>
+            <option value="standard">Standard Shipping (3-6 days)</option><br><br>
+            <option value="express">Express Shipping (1-2 days) - PKR 500</option><br>
+          </select>
+        </div>
+
+        <div class="form-field"><br>
+          <label style="display:block;margin-bottom:6px;font-weight:600">Payment Method</label><br>
+          <select id="payMethod" required>
+            <option value="cod">Cash on Delivery (COD)</option>
+          </select>
+        </div>
+      </div>
+
+      <div style="margin-top:10px; display:flex; gap:10px;">
+        <button type="button" class="ghost" onclick="showPage('cartPage')">Back to Cart </button>
+        <button type="submit">Confirm Order</button>
+      </div>
+    </form>
+
+    <p class="small-muted">All orders are processed securely. Payment method currently: Cash on Delivery.</p>
+  </div>
+</section>
+
+<!-- ✅ ORDER CONFIRMATION PAGE -->
+<section id="confirmPage">
+  <div class="confirm-inner">
+    <h2>✅ Order Confirmed</h2>
+    <h3>Thank you for shopping with Elaro Store!</h3><br>
+    <p>Your tracking ID: <span class="tracking" id="trackingId"></span></p>
+    <p id="confirmSummary"></p>
+    <div style="margin-top:12px;">
+      <button onclick="showPage('productPage')">Back to Shop</button>
+      <button onclick="showFeedback()">Leave Feedback</button>
+    </div>
+  </div>
+
+
+
+<!-- FEEDBACK -->
+<section id="feedbackPage">
+  <div class="feedback-inner">
+    <h2>Feedback</h2>
+    <textarea id="feedbackText" placeholder="Share your feedback..." required></textarea><br>
+    <div style="margin-top:10px;display:flex;gap:8px;">
+      <button class="ghost" onclick="closeFeedback()">Cancel</button><br>
+      <button onclick="submitFeedback()">Send Feedback</button>
+    </div>
+    <p id="feedbackThanks" class="small-muted" style="margin-top:10px;display:none;">Thanks for your feedback!</p>
+  </div>
+</section>
+
+</div> 
+<!-- Contact Button -->
+ <button class="contact-btn" onclick="toggleContact()">CONTACT US</button>
+<div id="contact-info" class="hidden-contact">
+  <script>
+function toggleContact() {
+  const info = document.getElementById('contact-info');
+  info.classList.toggle('show');
+}
+</script>
+
+  <h2>Contact Information</h2>
+  <h4>✉︎ elarostoreofficial514@gmail.com</h4>
+  <h4>📞 0515543327</h4>
+  <h4>✆ 03368117782</h4>
+  <h4>🅾 @_elarofficial514</h4>
+  <h4>Ⓕ @elarofficial512</h4>
+  <h4></h4>
+  <h4>🏠︎ SZABIST Islamabad Campus, Pakistan</h4>
+</div>
+
+
+
+<script>
+/* ---------- data (unchanged) ---------- */
+let currentCategory = "new";
+
+let products = [
+
+/* MEN */  
+  {name:"Bomber Jacket",price:1199,img:"images/bomberjacket.jfif",category:"boys"},
+  {name:"Swet-Shirt",price:1199,img:"images/sweatshirt.jfif",category:"boys"},
+  {name:"OverSize-Shirt",price:999,img:"images/oversize shirt.jpg",category:"boys"},
+  {name:"Casual-Shirt",price:1499,img:"images/casualshirt.jpg",category:"boys"},
+  {name:"Baggy Hoodie",price:1299,img:"images/black hoddie.jfif",category:"boys"},
+  {name:"Baggy Jeans",price:1499,img:"images/baggy jeans.jpg",category:"boys"},
+  {name:"Loose Fit Trouser",price:1199,img:"images/losse fit trouser.webp",category:"boys"},
+  {name:"Blue Denim Jeans",price:1999,img:"images/blue baggy jeans.jfif",category:"boys"},
+  {name:"Nike Shorts",price:4999,img:"images/bike black shorts.jpg",category:"boys"},
+  {name:"Zipper",price:1499,img:"images/zipper.jfif",category:"boys"},
+  {name:"WindBreaker Jacket",price:2499,img:"images/windbreaker jacket.jpg",category:"boys"},
+  {name:"Leather Jacket",price:3999,img:"images/leather jacket.webp",category:"boys"},
+  {name:"Parachute Jacket",price:3499,img:"images/parachute jacker.jpg",category:"boys"},
+  {name:"Jordan Shoes",price:4999,img:"images/jorden.jpg",category:"boys"},
+  {name:"New Balance Athletic Shoes",price:7999,img:"images/newbalance.jfif",category:"boys"},
+  {name:"BLack Stripes Samba",price:4999,img:"images/samba.jpg",category:"boys"},
+  {name:"Adidas Slippers",price:2999,img:"images/sleepers.jpg",category:"boys"},
+  {name:"Nike Air Force-1",price:4499,img:"images/aikforce 1.jfif",category:"boys"},
+
+  {name:"G-Shock Watch",price:2499,img:"https://sp.yimg.com/ib/th?id=OPHS.%2b%2fOBYYehV44WYQ474C474&o=5",category:"boys acessories"},
+  {name:"Braclet",price:999,img:"https://tse4.mm.bing.net/th/id/OIP.rZCmsiTlRl9ZU8F6hc1XLAHaHa?pid=Api",category:"boys acessories"},
+  {name:"Silver Chain",price:1499,img:"https://i.etsystatic.com/21729963/r/il/5d172f/4209598412/il_1080xN.4209598412_47bq.jpg",category:"boys acessories"},
+  {name:"Black rings",price:299,img:"https://plantingseedscaribbean.com/public/uploads/all/DC9RNynGn29209gb41ss3we9NLct3bo5fveTLGv3.jpg",category:"boys acessories"},
+  {name:"Wallet",price:1499,img:"https://tse2.mm.bing.net/th/id/OIP.3SI5LhK-sQ6gteH39u5bhgHaE8?pid=Api&P=0&h=220",category:"boys acessories"},
+  {name:"Cuban Chain",price:1199,img:"https://tse3.mm.bing.net/th/id/OIP._0yxhBp1vk9q7BgEyhOTRgHaHa?pid=Api",category:"boys acessories"},
+  {name:"Transparent-Glasses",price:499,img:"https://tse2.mm.bing.net/th/id/OIP.teqIXIxYCMkYRG2ciYavBQHaHa?pid=Api",category:"boys acessories"},
+  {name:"Belt",price:499,img:"https://tse2.mm.bing.net/th/id/OIP.Kq3IlQWjWHMpGb8Cnhm4cgHaHa?pid=Api&P=0&h=220",category:"boys acessories"},
+  {name:"Sun-Glasses",price:499,img:"https://tse2.mm.bing.net/th/id/OIP._yn5gmW79EDBm7w4ny8WNwHaHa?pid=Api&P=0&h=220",category:"boys acessories"},
+  {name:"Wirless HeadPhones",price:1999,img:"https://tse3.mm.bing.net/th/id/OIP.z6TqFIBKADkWsJG8mWE--gHaHa?pid=Api&P=0&h=220",category:"boys acessories"},
+
+  
+
+  /* WOMEN */  
+      { name: "OverSized Varsity Jacket", price: 1499, img: "images/wj2.png", category: "girls" },
+      { name: "Denim Jacket", price: 3499, img: "images/wj3.png", category: "girls" },
+      { name: "Denim Jacket Black", price: 3499, img: "images/wj4.png", category: "girls" },
+      { name: "Fur Coat", price: 2999, img: "images/wj5.png", category: "girls" },
+      { name: "Long Coat", price: 4999, img: "images/wj6.png", category: "girls" },
+      { name: "Embroided Varsity Jacket", price: 4999, img: "images/wj7.png", category: "girls" },
+      { name: "Knit Sleeves Puffer jacket", price: 4999, img: "images/wj8.png", category: "girls" },
+      { name: "Textured Fur Jacket", price: 1999, img: "images/wj9.png", category: "girls" },
+      { name: "Fur Jacket With Mock Neck", price: 1999, img: "images/wj10.png", category: "girls" },
+      { name: "Cropped Puffer Jacket", price: 2999, img: "images/13.png", category: "girls" },
+      { name: "Puffer Jacket", price: 1499, img: "images/14.png", category: "girls" },
+      { name: "Chrome Puffer Jacket", price: 1499, img: "images/15.png", category: "girls" },
+      { name: "Suede Jacket", price: 1499, img: "images/16.png", category: "girls" },
+      { name: "Fur Coat", price: 2999, img: "images/17.png", category: "girls" },
+  
+  {name:"Lip Glose",price:499,img:"https://tse3.mm.bing.net/th/id/OIP.m2WfAw9FVlXqZi2bX7SAgwHaJ3?pid=Api",category:"girls acessories"},
+  {name:"SunBlock",price:799,img:"https://tse2.mm.bing.net/th/id/OIP.eChBwzkx6pIWpGnY8p0u9gHaHa?pid=Api",category:"girls acessories"},
+  {name:"Lipstick",price:399,img:"https://tse2.mm.bing.net/th/id/OIP.dwNZdoHjWCt2oqcfTwcVJAHaLH?pid=Api",category:"girls acessories"},
+  {name:"Maskara",price:599,img:"https://tse4.mm.bing.net/th/id/OIP.2h1lI1ZDednXd4iqqVMzVgHaHa?pid=Api",category:"girls acessories"},
+  {name:"Earings",price:299,img:"https://tse3.mm.bing.net/th/id/OIP.U0hzER6MsR0vImguHlDShAHaHq?pid=Api",category:"girls acessories"},
+  {name:"Anklet",price:499,img:"https://sp.yimg.com/ib/th?id=OPHS.2XMPW025SedOkg474C474&o=5",category:"girls acessories"},
+  {name:"Foundation",price:799,img:"https://tse1.mm.bing.net/th/id/OIP.I4MqnGx2xDe4Q1wPbigVUAHaHa?pid=Api",category:"girls acessories"},
+  {name:"Nailpolish",price:399,img:"https://tse2.mm.bing.net/th/id/OIP.WuqERDbjJXsQU7crj3UKjAHaHa?pid=Api",category:"girls acessories"},
+  {name:"Eyeliner",price:499,img:"https://tse4.mm.bing.net/th/id/OIP.eI0_qwCj6Gg_rcGmTfLYcwHaHa?pid=Api",category:"girls acessories"},
+  {name:"Silver ring",price:499,img:"https://tse3.mm.bing.net/th/id/OIP.etHILsFOBbuYYrnyfbacpAHaE5?pid=Api",category:"girls acessories"},
+  
+
+  /* NEW ARRIVAL */  
+  {name:"PERFUME 💥🆕️",price:4999,img:"https://tse1.mm.bing.net/th/id/OIP.ZZhK6bS31VY46L7aOC0zhAHaIn?pid=Api&P=0&h=220",category:"new"},
+  {name:"Vans Black 💥🆕️",price:3499,img:"images/vans.webp",category:"new"},
+  {name:"Kitten Heals 💥🆕️ ",price:1499,img:"https://i.pinimg.com/originals/65/ac/4e/65ac4e41aeccef8bc80e5f04cf36fa97.webp",category:"new"},
+  {name:"Windbreaker Jacket 💥🆕️",price:1999, img: "images/windbreaker jacket.jpg ",category:"new"},
+  {name:"Cool Winter Cap 💥🆕️",price:499, img: "images/cool cap.jpg",category:"new"},
+  {name:"Sun Glasses 💥🆕️",price:799, img: "images/glasses.jpg",category:"new"},
+  {name:"HighNeck Sweater 💥🆕️",price:1499, img: "images/highneck.jpg",category:"new"},
+];
+ 
+  
+
+let cart = []; // will store {productIndex, quantity}
+
+
+/* ---------- LOGIN ---------- */
+
+function login() {
+      showPage("productPage");
+  document.getElementById("navBar").style.display = "flex"; // navbar appears after login
+  renderProducts("new");
+  document.getElementById("categoryBanner").src = banners["new"]
+  // Add the new background class
+  document.body.classList.add("after-login");
+    }
+    function logout() {
+     document.getElementById("navBar").style.display = "none";
+  showPage("loginPage");
+  cart = [];
+  updateCartUI();
+
+  // Remove the after-login background
+  document.body.classList.remove("after-login");
+    }
+
+/* ---------- PAGE SWITCH ---------- */
+function showPage(id){
+  document.querySelectorAll("section").forEach(s=>s.style.display="none");
+  document.getElementById(id).style.display="block";
+  // keep nav visible when logged in
+  if(id !== "loginPage" && navBar.style.display !== "flex"){
+    navBar.style.display = "flex";
+  }
+}
+/* ---------- RENDER PRODUCTS ----------
+   Important fix: use original index of product in products array so addToCart uses correct product.
+*/
+function renderProducts(cat){
+  currentCategory = cat;
+  let box = document.getElementById("productsList");
+  box.innerHTML = "";
+  products.forEach((p, idx) => {
+    if(p.category === cat){
+      box.innerHTML += `
+        <div class="product">
+          <img src="${p.img}" alt="${p.name}">
+          <h3>${p.name}</h3>
+          <p>PKR ${p.price}</p>
+          <input type="number" id="qty-${idx}" min="1" value="1" style="width:72px;padding:8px;border-radius:6px;border:1px solid #e5e9ee">
+          <button onclick="addToCart(${idx})">Add to Cart</button>
+        </div>
+      `;
+    }
+  });
+}
+
+/* ---------- SEARCH PRODUCTS (also uses original indexes) ---------- */
+function searchProduct(){
+  let term = document.getElementById("topSearch").value.toLowerCase();
+  let box = document.getElementById("productsList");
+  box.innerHTML = "";
+  products.forEach((p, idx) => {
+    if(p.category===currentCategory && p.name.toLowerCase().includes(term)){
+      box.innerHTML += `
+        <div class="product">
+          <img src="${p.img}" alt="${p.name}">
+          <h3>${p.name}</h3>
+          <p>PKR ${p.price}</p>
+          <input type="number" id="qty-${idx}" min="1" value="1" style="width:72px;padding:8px;border-radius:6px;border:1px solid #e5e9ee">
+          <button onclick="addToCart(${idx})">Add to Cart</button>
+        </div>
+      `;
+    }
+  });
+}
+
+/* ---------- CART (improved) ---------- */
+
+/* addToCart now takes the original product index in the products[] array.
+   If product already in cart, increment its quantity.
+*/
+function addToCart(productIndex){
+  const qtyInput = document.getElementById(`qty-${productIndex}`);
+  let q = 1;
+  if(qtyInput) q = parseInt(qtyInput.value) || 1;
+  // check if product already in cart
+  const existing = cart.find(c => c.productIndex === productIndex);
+  if(existing){
+    existing.quantity += q;
+  } else {
+    cart.push({productIndex: productIndex, quantity: q});
+  }
+  updateCartUI();
+  alert("Added to cart");
+}
+
+/* remove item from cart by index in cart array */
+function removeFromCart(cartIndex){
+  cart.splice(cartIndex,1);
+  updateCartUI();
+}
+
+/* change quantity (set) */
+function setCartQuantity(cartIndex, qty){
+  qty = parseInt(qty);
+  
+  if(isNaN(qty) || qty <= 0){
+    // remove item when quantity set to 0 or invalid
+    removeFromCart(cartIndex);
+    return;
+  }
+  cart[cartIndex].quantity = qty;
+  updateCartUI();
+}
+
+/* increase / decrease helpers */
+function changeCartQty(cartIndex, delta){
+  let item = cart[cartIndex];
+  if(!item) return;
+  item.quantity += delta;
+  if(item.quantity <= 0){
+    removeFromCart(cartIndex);
+  } else {
+    updateCartUI();
+  }
+}
+
+/* update UI for cart */
+function updateCartUI(){
+  let list = document.getElementById("cartItems");
+  let total = 0;
+  list.innerHTML = "";
+
+  cart.forEach((entry, i) => {
+    const prod = products[entry.productIndex];
+    const subtotal = prod.price * entry.quantity;
+    total += subtotal;
+
+    list.innerHTML += `
+      <li>
+        <div class="cart-left">
+          <img class="cart-thumb" src="${prod.img}" alt="${prod.name}">
+          <div>
+            <div style="font-weight:700">${prod.name}</div>
+            <div class="small">PKR ${prod.price} each</div>
+            <div class="small" style="margin-top:6px">Subtotal: PKR ${subtotal}</div>
+          </div>
+        </div>
+
+        <div class="cart-actions">
+          <div class="qty-controls">
+            <button onclick="changeCartQty(${i}, -1)">−</button>
+            <input type="number" min="1" value="${entry.quantity}" id="cart-qty-${i}" style="width:56px;padding:6px;border-radius:6px;border:1px solid #eef2f7;text-align:center" onchange="setCartQuantity(${i}, this.value)">
+            <button onclick="changeCartQty(${i}, 1)">+</button>
+          </div>
+          <div style="margin-left:10px">
+            <button class="ghost" onclick="removeFromCart(${i})">Remove</button>
+          </div>
+        </div>
+      </li>
+    `;
+  });
+
+  document.getElementById("totalAmount").innerText = total;
+  document.getElementById("cart-count").innerText = cart.reduce((s, c) => s + c.quantity, 0);
+}
+
+/* ---------- ORDER FLOW: billing, confirm, tracking ---------- */
+function goToBilling(){
+  if(cart.length === 0){
+    alert("Cart is empty!");
+    return;
+  }
+  // show billing page
+  showPage("billingPage");
+}
+
+/* when billing form is submitted generate an order, tracking ID and show confirm */
+function submitBilling(e){
+  e.preventDefault();
+  // gather billing info
+  const name = document.getElementById("billName").value.trim();
+  const phone = document.getElementById("billPhone").value.trim();
+  const email = document.getElementById("billEmail").value.trim();
+  const address = document.getElementById("billAddress").value.trim();
+  const shipMethod = document.getElementById("shipMethod").value;
+  const payMethod = document.getElementById("payMethod").value;
+
+
+
+  // calculate total + shipping cost
+  let subtotal = cart.reduce((s, entry) => s + products[entry.productIndex].price * entry.quantity, 0);
+  let shippingFee = shipMethod === "express" ? 500 : 0;
+  let total = subtotal + shippingFee;
+
+  // generate tracking ID
+  const tracking = generateTrackingId();
+
+  // prepare a short summary
+  let summary = `Order for ${name}
+
+  Phone Number :0${phone}
+
+  Email:${email}
+
+  Shipping: ${
+
+  shipMethod === "express" ? "Express" : "Standard"
+}
+
+  Total paid on delivery: PKR ${total}.`;
+document.getElementById("confirmSummary").innerText = summary;
+document.getElementById("trackingId").innerText = tracking;
+
+
+  // clear cart (order placed)
+  cart = [];
+  updateCartUI();
+
+  // show confirm page
+  showPage("confirmPage");
+}
+
+/* helper for tracking id: random 10 chars */
+function generateTrackingId(){
+  const chars = "ORD-2025-004521";
+  let out = "";
+  for(let i=0;i<10;i++){
+    out += chars.charAt(Math.floor(Math.random()*chars.length));
+  }
+  return out;
+}
+
+/* ---------- FEEDBACK ---------- */
+function showFeedback(){
+  showPage("feedbackPage");
+  document.getElementById("feedbackText").value = "";
+  document.getElementById("feedbackThanks").style.display = "none";
+}
+
+function closeFeedback(){
+  // return to confirm page
+  showPage("confirmPage");
+}
+
+function submitFeedback(){
+  const text = document.getElementById("feedbackText").value.trim();
+  if(!text){ alert("Please enter feedback before submitting."); return; }
+  // in a real app we'd send to server. Here we just show a thank you.
+  document.getElementById("feedbackThanks").style.display = "block";
+  setTimeout(()=> {
+    document.getElementById("feedbackThanks").innerText = "Thanks — we received your feedback.";
+    // return to confirm page after a short delay
+    setTimeout(()=> showPage("confirmPage"), 900);
+  }, 400);
+}
+
+
+const banners = {
+  "boys": "images/banners/men.png",
+  "boys acessories": "images/banners/men-accessories.png",
+  "girls": "images/banners/women.png",
+  "girls acessories": "images/banners/women-accessories.png",
+  "new": "images/banners/new.png"
+};
+
+
+/* ---------- initialize ---------- */
+renderProducts("boys");
+renderProducts("boys acessories");
+renderProducts("girls");
+renderProducts("girls acessories");
+updateCartUI();
+showPage("loginPage");
+
+
+
+</script>
+
+<footer>
+    <p>©️ 2025. All Rights Reserved By ELARO STORE©️</p>
+  </footer>
+
+<script>
+function toggleMenu() {
+   const menu = document.getElementById("menuDropdown"); // get the dropdown
+  menu.style.display = menu.style.display === "flex" ? "none" : "flex";
+  menu.style.flexDirection = "column";
+}
+document.addEventListener("click", function (e) {
+  const menu = document.getElementById("menuDropdown");
+  const btn = document.querySelector(".menu-btn");
+
+  if (!menu || !btn) return;
+
+  if (!menu.contains(e.target) && !btn.contains(e.target)) {
+    menu.style.display = "none";
+  }
+});
+
+</script>
+
+<script>
+function goCategory(category) {
+  showPage("productPage");
+  renderProducts(category);
+
+  // ✅ Change banner
+  const banner = document.getElementById("categoryBanner");
+  banner.src = banners[category] || "images/banners/default.png";
+
+  toggleMenu();
+}
+
+</script>
+
+</body>
+</html>
