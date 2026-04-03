@@ -1,1 +1,1 @@
-Elaro Store is a modern and responsive e-commerce website designed to provide a smooth and engaging online shopping experience. This project demonstrates core front-end development skills using HTML, CSS, and JavaScript.
+
